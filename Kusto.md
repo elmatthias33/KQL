@@ -27,7 +27,8 @@ Without a table
 
 With a table
 
-![search with table](https://github.com/elmatthias33/Kusto/assets/138261985/6a7390ca-18f9-4956-a496-9887a869ce89)
+![search with table](https://github.com/elmatthias33/KQL/assets/138261985/9e6d2def-9714-4a72-9fd9-0f0ce7f653ea)
+
 
 > Same as above, once you have your results, you'll want to read through them until you find events that you think match or are correlated to what you searched.  The difference here is you'll want to mentally make note of the column that contains whatever you searched and any other columns that you think would be useful when you're building your query. Use that information to start setting conditions or building a more efficient query. 
 
@@ -52,7 +53,7 @@ For additional string operators, view [String Operators](https://learn.microsoft
 
 **EXAMPLE 1**
 
-![where equals](https://github.com/elmatthias33/Kusto/assets/138261985/12d71d0f-2b22-4405-9563-5c13ff65bd0c)
+![where equals](https://github.com/elmatthias33/KQL/assets/138261985/9d23cedf-c23a-400a-a542-21f39ce22214)
 
 Query Explanation:
 
@@ -60,7 +61,7 @@ Query Explanation:
 
 **EXAMPLE 2**
 
-![where contains](https://github.com/elmatthias33/Kusto/assets/138261985/adf0813c-c78c-42ee-a64b-f228f73f6019)
+![where contains](https://github.com/elmatthias33/KQL/assets/138261985/a59419a4-5d67-4ac6-abd2-36b4ba400401)
 
 Query Explanation:
 
@@ -68,7 +69,7 @@ Query Explanation:
 
 **EXAMPLE 3**
 
-![where !in](https://github.com/elmatthias33/Kusto/assets/138261985/cff0294e-9443-4777-a101-ceceaaf753ca)
+![where IN](https://github.com/elmatthias33/KQL/assets/138261985/2f4ecd48-3e61-4827-a228-312e83157931)
 
 Query Explanation:
 
@@ -81,7 +82,7 @@ There are also several different project operators. Below are examples of a few.
 
 **EXAMPLE 1**
 
-![kql project](https://github.com/elmatthias33/Kusto/assets/138261985/5d0a60b6-447c-42fe-ba99-5bc3d5524f88)
+![project](https://github.com/elmatthias33/KQL/assets/138261985/eacad5d9-c269-49f0-ae8c-21c04a256dc2)
 
 Query Explanation:
 
@@ -89,13 +90,13 @@ Query Explanation:
 
 **EXAMPLE 2**
 
-![kql project-reorder](https://github.com/elmatthias33/Kusto/assets/138261985/56649c5b-d4e7-4c46-8e69-709350c58040)
+![project-reorder](https://github.com/elmatthias33/KQL/assets/138261985/386b96ab-6386-409a-b935-502704e1b427)
 
 > Unlike the solo project operator, the project-reorder operator doesn't display only the columns you input. Depending on previous conditions in your query, it'll display all the columns that it would have if you didn't use project, but it adjust the order of the columns. Let's say you ran a query without using any of the project operators and your result set had 11 columns and Account was at the end (or far right) of your list of columns and your Activity column was halfway down. If you used project-reorder, it'll leave the other 9 columns in your result set but Account and Activity will be at the start of the list of columns. Basically if you wrote `| project-reorder Account, Activity`, Account would now be the first column and Activity the second. Whatever order you write your columns in, that's the order your results will display in 
 
 **EXAMPLE 3**
 
-![kql project-away](https://github.com/elmatthias33/Kusto/assets/138261985/c0c189fb-8823-49b6-9f7d-d2209c20d3c6)
+![project-away](https://github.com/elmatthias33/KQL/assets/138261985/340120f5-3552-46b8-9e02-b9462b4d4720)
 
 > Just like with project-reorder, project-away keeps columns that would've been there if you didn't use any project operators. The difference with this operator is that it removes the columns that you listed, so if you originally had 8 columns and you decided to use `| project-away Account`, your result set will now show 7 columns because the Account column was removed.
 
@@ -117,7 +118,7 @@ Time is not an operator in KQL, but in this section we'll briefly dicuss how to 
 
 **EXAMPLE 1**
 
-![kql where time](https://github.com/elmatthias33/Kusto/assets/138261985/50659b52-2498-4a70-b9ba-22fcb9a56569)
+![time](https://github.com/elmatthias33/KQL/assets/138261985/0bf6ab20-7f5a-4c4f-a171-84d4fccdebdc)
 
 Query Explanation
 
@@ -125,7 +126,7 @@ Query Explanation
 
 **EXAMPLE 2**
 
-![kql where datetime](https://github.com/elmatthias33/Kusto/assets/138261985/8b297295-dbc6-4c26-a91f-5c4deed7773d)
+![datetime](https://github.com/elmatthias33/KQL/assets/138261985/ee4addb7-fe31-4bb8-83d9-8cad48771edd)
 
 Query Explanation
 
@@ -137,14 +138,13 @@ Whenever you see distinct, think deduplication. It gets rid of duplicates values
 
 **EXAMPLE 1**
 
-![distinct kql](https://github.com/elmatthias33/Kusto/assets/138261985/0bfdea99-0e88-4f2e-bb0a-4e91ca176ae4)
-
+![distinct](https://github.com/elmatthias33/KQL/assets/138261985/2db3e5e6-03df-42b3-869c-d6bfea371f63)
 
 >As you see in the screenshot above, we used distinct to get a deduplicated list of EventIDs from the SecurityEvent table.  
 
 **EXAMPLE 2**
 
-![distinct kql v2](https://github.com/elmatthias33/Kusto/assets/138261985/5e78e6ac-3b1e-4a02-aea9-6536eb21399d)
+![distinct 2](https://github.com/elmatthias33/KQL/assets/138261985/ab461387-d7b7-46c0-b47e-3623cd74a0db)
 
 > The difference with this example is we've added another column. The first example returned less than 30 rows but this query returned over 200 rows. That's because in this case, there were different computers that had logs containing different EventIDs. If we were to add a third column such as TimeGenerated, we could see even more rows returned because those computers could have logs containing the same EventIDs at different times during the specified time period. So again, think of distinct as ***getting rid of duplicates or showing unique combinations as you add more columns***. 
 
@@ -166,21 +166,21 @@ If you've ever done a little bit of scripting or writing commands in command pro
 
 **EXAMPLE 1**
 
-![extend division](https://github.com/elmatthias33/Kusto/assets/138261985/8697ea38-bf67-47e1-a5ba-7328d8d0173d)
+![extend](https://github.com/elmatthias33/KQL/assets/138261985/03709ccb-0cd2-4c7e-804c-c6df657d014b)
 
 **EXAMPLE 2**
 
-![extend to string](https://github.com/elmatthias33/Kusto/assets/138261985/92cc7f5a-565f-49f1-bc60-905081a4655b)
+![extend tostring](https://github.com/elmatthias33/KQL/assets/138261985/8035e052-0295-483d-9589-4467e621a66f)
 
 > With this query, we attached a value from under InitiatedBy back to InitiatedBy. That sounds confusing but if you were to run the query without extend, you'll find that there's already a InitiatedBy column. Without modifying that column, it's a json. It's a long string with some information that we don't want in this case. There's several ways to extract or parse that information but in this case, if you expand the InitiatedBy column, you'll see a sub field called "user". If you expand user, there's another field called UserPrinicipalName. What this query did was instead of creating a new column, we picked out a specific item to display in place of the InitiatedBy column instead of the entire string that contained some unnecessary information. 
 
 **EXAMPLE 3**
 
-![extend strcat](https://github.com/elmatthias33/Kusto/assets/138261985/12782b62-de31-4596-bd89-73a7bcb83b8c)
+![extend strcat](https://github.com/elmatthias33/KQL/assets/138261985/586b2108-317c-4ba0-8613-d99ea2d47a79)
 
 **EXAMPLE 4**
 
-![extend case](https://github.com/elmatthias33/Kusto/assets/138261985/4d75a77f-aeef-4c49-8a4b-b4be84bc1b49)
+![extend case](https://github.com/elmatthias33/KQL/assets/138261985/4b0db58f-3014-42de-85d8-314e18f7fd3b)
 
 **EXAMPLE 5**
 
