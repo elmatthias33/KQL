@@ -168,6 +168,8 @@ If you've ever done a little bit of scripting or writing commands in command pro
 
 ![extend](https://github.com/elmatthias33/KQL/assets/138261985/03709ccb-0cd2-4c7e-804c-c6df657d014b)
 
+> With the first example, a new column named FreeGB was created and the value in the new column would be the value of the CounterValue column divided by 1000. 
+
 **EXAMPLE 2**
 
 ![extend tostring](https://github.com/elmatthias33/KQL/assets/138261985/8035e052-0295-483d-9589-4467e621a66f)
@@ -178,9 +180,13 @@ If you've ever done a little bit of scripting or writing commands in command pro
 
 ![extend strcat](https://github.com/elmatthias33/KQL/assets/138261985/586b2108-317c-4ba0-8613-d99ea2d47a79)
 
+> **strcat** translates to string concatenation. Think of it as a way to combine strings, values and/or text together. With the query above, we created a new column named OperationDetails and within that column we want the values to show TestUser Initated the string from the OperationName column. Everything in between the quotes are custom words that you want to add, and if you want to add a space in between items, you use " " (space in the middle of quotes). In this query, you could replace "test user" with the InitiatedBy column because if you had several different users that iniiated the operation, it'll automatically add the name tied to that event in to the OperationDetails Column. 
+
 **EXAMPLE 4**
 
 ![extend case](https://github.com/elmatthias33/KQL/assets/138261985/4b0db58f-3014-42de-85d8-314e18f7fd3b)
+
+> Think of case as a stronger IIF statement. With IIF, it's just one (if, then, else) statement. With a case, you can add additional statements. As you can see in the query above, we created a new column named EventDetails and within the case, we stated that if the EventiD equals 4625, display "this user failed to login" in the EventDetails column. The same goes for the other items in the case. In order to use a case, you have to use at least three arguments which is why we put "irrelevant" as the last argument. It's also possible to use other operators within the case such as strcat, toscalar, etc. 
 
 **EXAMPLE 5**
 
