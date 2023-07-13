@@ -8,6 +8,8 @@
 
 [Tech Community KQL Cheatsheet](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/azure-data-explorer-kql-cheat-sheets/ba-p/1057404)
 
+[Kusto Query Language Overview](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/inoperator)
+
 ## Search 
 
 Before we begin, you will often see the **take** operator used with the example queries. The take operator is **used to specify the amount of events or rows you want returned**. The caveat is that it'll be a ***randomized set of rows*** depending on your conditions that were set beforehand.  
@@ -100,7 +102,7 @@ Query Explanation:
 
 > Just like with project-reorder, project-away keeps columns that would've been there if you didn't use any project operators. The difference with this operator is that it removes the columns that you listed, so if you originally had 8 columns and you decided to use `| project-away Account`, your result set will now show 7 columns because the Account column was removed.
 
-**Take note that if you use project early on in your query, you can no longer use the columns that you didn't list later on in your query**. What this means is if you were to use `SecurityEvent | project TimeGenerated, Account, EventID`, you can't go to any of the following lines in the sequence and query for something like the Activity or Computer column. You would have to add those columns to your project if you want to use them later. This is the case for several other operators that we'll discuss later. 
+**Take note that if you use project early on in your query, you can no longer use the columns that you didn't list later on in your query**. What this means is if you were to use `SecurityEvent | project TimeGenerated, Account, EventID `, you can't go to any of the following lines in the sequence and query for something like the Activity or Computer column. You would have to add those columns to your project if you want to use them later. This is the case for several other operators that we'll discuss later. 
 
 ## Time
 
