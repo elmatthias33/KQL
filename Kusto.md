@@ -192,3 +192,6 @@ If you've ever done a little bit of scripting or writing commands in command pro
 
 **EXAMPLE 5**
 
+## Summarize 
+
+Summarize is an aggregation function in KQL. 
