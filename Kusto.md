@@ -194,4 +194,16 @@ If you've ever done a little bit of scripting or writing commands in command pro
 
 ## Summarize 
 
-Summarize is an aggregation function in KQL. 
+Summarize is an aggregation function in KQL that can be used to count, make sets of information (e.g. make a set of computers that met the condtions set in your query), find the latest or earliest event, etc. You'll also often use this operator before you can redner a visulation such as a column chart. Examples of some of these will be listed below. 
+
+**Example 1**
+
+<img width="742" alt="summarize count" src="https://github.com/elmatthias33/KQL/assets/138261985/77dc652e-25a8-4a02-bed8-38c35223fc5e">
+
+> summarize count can be used in different ways. In the example above, we wanted to count how many times an eventID was triggered over the past 7 days.
+
+**Example 2**
+
+<img width="746" alt="summarize count bin" src="https://github.com/elmatthias33/KQL/assets/138261985/96c8fae5-2e65-4d72-b71f-901b276a999c">
+
+> We essentially used the same query in example 1 but we're adding **bin()** to our query and choosing a specific eventID. What using bin() does is create buckets for our data. In this case, we're simply stating we want a count of the amount of times that an event ID was triggered each day (hence TimeGenerated, 1d) over the course of 7 days. Another example could be you changing your look back time to 90 days and change your bucket time to 30d instead of 1d. This will now create 30 day buckets using the last 90 days of logs. Simply put, you should see approxmiately how many times an event was triggered every 30 days during a 90 day period. 
